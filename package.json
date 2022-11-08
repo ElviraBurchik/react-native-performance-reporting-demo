@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@shopify/react-native-performance": "^4.1.2",
+    "@shopify/react-native-performance-navigation": "^3.0.0"
+  }
+}
