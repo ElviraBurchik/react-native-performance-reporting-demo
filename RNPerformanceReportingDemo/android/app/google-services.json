@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "1032374657898",
+    "project_id": "react-native-performance-demo",
+    "storage_bucket": "react-native-performance-demo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1032374657898:android:113bfe29295a3ace9a3b13",
+        "android_client_info": {
+          "package_name": "com.rnperformancereportingdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1032374657898-dqh8jkik56uhov3899lk8kjqhkvf7nka.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4FgPs5o_3U09rWeqbyQESlI4pEauS7WI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1032374657898-dqh8jkik56uhov3899lk8kjqhkvf7nka.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1032374657898-oa6dm3gb4vb3005tc5pd0r6aebjor6cb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.shopify.reactnativeperformance.fixture"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
