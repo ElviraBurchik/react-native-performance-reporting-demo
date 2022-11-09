@@ -81,19 +81,6 @@ const App = () => {
     });
   }, []);
 
-  const onInteractiveCallback = useCallback((TTI: number, listName: string) => {
-    console.log(`${listName}'s TTI: ${TTI}`);
-  }, []);
-
-  const onBlankAreaCallback = useCallback(
-    (offsetStart: number, offsetEnd: number, listName: string) => {
-      console.log(
-        `Blank area for ${listName}: ${Math.max(offsetStart, offsetEnd)}`,
-      );
-    },
-    [],
-  );
-
   return (
     <>
       <ApolloProvider client={apolloClient}>
