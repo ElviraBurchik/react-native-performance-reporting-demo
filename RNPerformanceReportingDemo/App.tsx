@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo} from 'react';
+import React, {useMemo} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {PerformanceProfiler, LogLevel} from '@shopify/react-native-performance';
@@ -8,7 +8,6 @@ import analytics from '@react-native-firebase/analytics';
 import {ExamplesScreen} from './examples';
 import PerformanceScreen from './examples/PerformanceScreen';
 import {NavigationKeys, RootStackParamList} from './constants';
-import FastRenderPassesScreen from './examples/FastRenderPassesScreen';
 import ConditionalRenderingScreen from './examples/ConditionalRenderingScreen';
 import DrawerNavigator from './examples/DrawerNavigator';
 import NestedNavigationScreen from './examples/NestedNavigationScreen';
@@ -33,10 +32,6 @@ const NavigationTree = () => {
         <Stack.Screen
           name={NavigationKeys.DRAWER_NAVIGATOR}
           component={DrawerNavigator}
-        />
-        <Stack.Screen
-          name={NavigationKeys.FAST_RENDER_PASSES_SCREEN}
-          component={FastRenderPassesScreen}
         />
         <Stack.Screen
           name={NavigationKeys.CONDITIONAL_RENDERING_SCREEN}

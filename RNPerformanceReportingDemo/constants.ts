@@ -1,7 +1,6 @@
 export const NavigationKeys = {
   EXAMPLES: 'Examples' as const,
   PERFORMANCE: 'Performance' as const,
-  FAST_RENDER_PASSES_SCREEN: 'FastRenderPassesScreen' as const,
   CONDITIONAL_RENDERING_SCREEN: 'ConditionalRenderingScreen' as const,
   DRAWER_NAVIGATOR: 'DrawerNavigator' as const,
   DRAWER_NAVIGATOR_SCREEN_1: 'DrawerNavigatorScreen1' as const,

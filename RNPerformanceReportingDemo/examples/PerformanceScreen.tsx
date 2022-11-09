@@ -7,11 +7,14 @@ import {
   ActivityIndicator,
   Button,
   NativeSyntheticEvent,
-  NativeTouchEvent, 
-  View
+  NativeTouchEvent,
+  View,
 } from 'react-native';
-import {RenderStateProps, useResetFlow, GestureResponderEvent} from '@shopify/react-native-performance';
-import {ReactNavigationPerformanceView, useProfiledNavigation} from '@shopify/react-native-performance-navigation';
+import {
+  RenderStateProps,
+  useResetFlow,
+} from '@shopify/react-native-performance';
+import {ReactNavigationPerformanceView} from '@shopify/react-native-performance-navigation';
 import gql from 'graphql-tag';
 import {useQuery} from '@apollo/client';
 
@@ -33,7 +36,6 @@ const AllRickAndMortyCharacters = gql`
 `;
 
 const PerformanceScreen = () => {
-  const navigation = useProfiledNavigation();
   const [simulatedSlowData, setSimulatedSlowData] = useState<string>();
   const [secondsLeft, restartTimer] = useCountdownTimer({
     durationSeconds: RENDER_DELAY_SECONDS,
@@ -53,21 +55,19 @@ const PerformanceScreen = () => {
     })();
   }, [simulatedSlowOperation]);
 
-  const rendered = rickAndMortyQueryResult.data !== undefined && simulatedSlowData !== undefined;
-
-  const goHome = useCallback(
-    (uiEvent: GestureResponderEvent) => {
-      navigation.navigate({uiEvent}, {name: NavigationKeys.EXAMPLES, params: {}});
-    },
-    [navigation],
-  );
+  const rendered =
+    rickAndMortyQueryResult.data !== undefined &&
+    simulatedSlowData !== undefined;
 
   const RenderedBody = useMemo(() => {
     return (
       <View>
-        <Text style={styles.helperText}>Rendered: {JSON.stringify({simulatedSlowData})}</Text>
         <Text style={styles.helperText}>
-          All Rick and Morty characters: {JSON.stringify(rickAndMortyQueryResult.data)}
+          Rendered: {JSON.stringify({simulatedSlowData})}
+        </Text>
+        <Text style={styles.helperText}>
+          All Rick and Morty characters:{' '}
+          {JSON.stringify(rickAndMortyQueryResult.data)}
         </Text>
       </View>
     );
@@ -77,7 +77,9 @@ const PerformanceScreen = () => {
     return (
       <>
         <ActivityIndicator />
-        <Text style={styles.helperText}>Rendering in: {secondsLeft} seconds.</Text>
+        <Text style={styles.helperText}>
+          Rendering in: {secondsLeft} seconds.
+        </Text>
       </>
     );
   }, [secondsLeft]);
@@ -96,7 +98,11 @@ const PerformanceScreen = () => {
 
   const onFakePullToRefresh = useCallback(
     async (uiEvent: NativeSyntheticEvent<NativeTouchEvent>) => {
-      resetFlow({uiEvent, destination: NavigationKeys.PERFORMANCE, renderTimeoutMillisOverride: 6 * 1000});
+      resetFlow({
+        uiEvent,
+        destination: NavigationKeys.PERFORMANCE,
+        renderTimeoutMillisOverride: 6 * 1000,
+      });
       restartTimer();
       setSimulatedSlowData(undefined);
       rickAndMortyQueryResult.refetch();
@@ -110,12 +116,12 @@ const PerformanceScreen = () => {
     <ReactNavigationPerformanceView
       screenName={NavigationKeys.PERFORMANCE}
       {...renderStateProps}
-      componentInstanceId={componentInstanceId}
-    >
+      componentInstanceId={componentInstanceId}>
       <Button onPress={onFakePullToRefresh} title="Simulate Pull-to-refresh" />
-      <Button title="Go to home" onPress={goHome} />
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView style={styles.container}>{rendered ? RenderedBody : WaitingBody}</SafeAreaView>
+      <SafeAreaView style={styles.container}>
+        {rendered ? RenderedBody : WaitingBody}
+      </SafeAreaView>
     </ReactNavigationPerformanceView>
   );
 };
