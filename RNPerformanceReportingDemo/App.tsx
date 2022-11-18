@@ -3,7 +3,8 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {PerformanceProfiler, LogLevel} from '@shopify/react-native-performance';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-import analytics from '@react-native-firebase/analytics';
+// import analytics from '@react-native-firebase/analytics';
+import {init, track} from '@amplitude/analytics-react-native';
 
 import {ExamplesScreen} from './examples';
 import PerformanceScreen from './examples/PerformanceScreen';
@@ -14,6 +15,8 @@ import NestedNavigationScreen from './examples/NestedNavigationScreen';
 import NestedContextScreen, {
   InnerNestedContextScreen,
 } from './examples/NestedContextScreen';
+
+init('a0234a30aef9b2c6b7c0ac64e585d867');
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -81,8 +84,8 @@ const App = () => {
       <ApolloProvider client={apolloClient}>
         <PerformanceProfiler
           logLevel={LogLevel.Debug}
-          onReportPrepared={async report =>
-            await analytics().logEvent('react_native_performance', report)
+          onReportPrepared={report =>
+            track('react_native_performance', report)
           }>
           <NavigationTree />
         </PerformanceProfiler>
