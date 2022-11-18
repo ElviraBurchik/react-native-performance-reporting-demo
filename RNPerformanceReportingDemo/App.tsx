@@ -3,7 +3,6 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {PerformanceProfiler, LogLevel} from '@shopify/react-native-performance';
 import {ApolloClient, ApolloProvider, InMemoryCache} from '@apollo/client';
-// import analytics from '@react-native-firebase/analytics';
 import {init, track} from '@amplitude/analytics-react-native';
 
 import {ExamplesScreen} from './examples';
